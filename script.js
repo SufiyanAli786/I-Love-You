@@ -25,6 +25,25 @@ function createFloatingHeart() {
     });
 }
 
+// Handle screen orientation
+function handleOrientation() {
+    const orientationMessage = document.querySelector('.orientation-message');
+    const container = document.querySelector('.container');
+    
+    if (window.matchMedia("(max-width: 768px) and (orientation: landscape)").matches) {
+        orientationMessage.style.display = 'flex';
+        container.style.display = 'none';
+    } else {
+        orientationMessage.style.display = 'none';
+        container.style.display = 'block';
+    }
+}
+
+// Listen for orientation changes
+window.addEventListener('load', handleOrientation);
+window.addEventListener('resize', handleOrientation);
+window.addEventListener('orientationchange', handleOrientation);
+
 // Create firework effect
 function createFirework() {
     const fireworks = document.querySelector('.fireworks');
